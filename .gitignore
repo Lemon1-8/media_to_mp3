@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.spec
+!packaging/build.spec
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Project
+sample_input/
+tools/ffmpeg/ffmpeg.exe
+tools/ffmpeg/*.dll
+ffmpeg.zip
+ffmpeg.7z
+
+# OS
+Thumbs.db
+.DS_Store

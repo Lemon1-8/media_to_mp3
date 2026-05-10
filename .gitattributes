@@ -1,0 +1,7 @@
+* text=auto
+*.py text diff=python
+*.md text
+*.bat text eol=crlf
+*.spec text
+.gitignore text
+.gitattributes text
