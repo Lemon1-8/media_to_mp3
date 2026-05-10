@@ -17,7 +17,7 @@ Qoder 是 Windows 桌面工具，支持拖放或浏览添加音视频文件，�
 
 ## 下载
 
-从 [Releases](https://github.com/Lemon1-8/media_to_mp3/releases) 页面下载最新版 `Qoder.zip`，解压运行 `Qoder.exe` 即可。
+自行构建，或从 [Releases](https://github.com/Lemon1-8/media_to_mp3/releases) 页面下载。
 
 ## 开发
 
