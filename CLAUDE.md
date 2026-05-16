@@ -14,6 +14,9 @@ Qoder 是 Windows 桌面工具：用户拖放音视频文件，转换为 MP3 格
 # 开发运行
 python run.py
 
+# 安装依赖
+pip install -r requirements.txt
+
 # 运行全部测试
 python -m pytest tests/ -v
 
@@ -28,6 +31,12 @@ python -m PyInstaller packaging/build.spec
 
 # 一键构建（自动安装 PyInstaller、清理旧构建）
 packaging\build.bat
+
+# Git 提交
+git add -A && git commit -m "描述修改内容"
+
+# 推送到 GitHub
+git push
 ```
 
 ## 项目结构
@@ -161,7 +170,8 @@ error_occurred    ──→  _on_file_error → _on_file_done(False, ...)
 ## 测试
 
 - 使用 pytest，无需 mock 库（纯逻辑测试用正则/路径操作，Qt 部分用 QCoreApplication fixture）
-- Qt 相关的 fixture 使用 `scope="module"`，复用 `QCoreApplication` 实例
-- `test_ffmpeg_wrapper.py` 仅测试正则表达式解析，不启动 QProcess
+- Qt 相关的 fixture 使用 `scope="module"` 复用 `QCoreApplication` 实例
+- `test_ffmpeg_wrapper.py` 仅测试正则表达式解析（`OUT_TIME_US_RE`、`DURATION_RE`、`PROGRESS_END_RE`），不启动 QProcess
 - `test_file_utils.py` 使用 `tempfile.TemporaryDirectory` 测试文件名碰撞场景
-- `test_metadata_handler.py` 只测试边界情况（不存在的文件、空元数据），实际读写依赖 mutagen
+- `test_metadata_handler.py` 测试空元数据、不存在的文件等边界情况（不依赖实际文件 IO）
+- `test_queue_manager.py` 测试队列增删改查和信号发射，需要 qapp fixture
